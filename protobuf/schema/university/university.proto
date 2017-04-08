@@ -1,0 +1,39 @@
+syntax = "proto3";
+package university;
+
+enum Gender {
+	UNKNOWN_GENDER = 0;
+	MALE = 1;
+	FEMALE = 2;
+}
+
+message Professor {
+	string id = 1;
+	string name = 2;
+	Gender gender = 3;
+	uint32 age = 4;
+}
+
+message Course {
+	string id = 1;
+	string name = 2;
+	repeated Professor professors = 3;
+}
+
+message Student{
+	string id = 1;
+	Gender gender = 2;
+	string name = 3;
+	uint32 age = 4;
+	repeated Course registed_courses = 5;
+}
+
+message GetEntityInfoRequest{
+	string id = 1;
+}
+
+service UniversityManager{
+	rpc GetStudentInfo(GetEntityInfoRequest) returns(Student){}
+	rpc GetCourseInfo(GetEntityInfoRequest) returns(Course){}
+	rpc GetProfessorInfo(GetEntityInfoRequest) returns(Professor){}
+}
