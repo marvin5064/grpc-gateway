@@ -1,6 +1,8 @@
 syntax = "proto3";
 package university;
 
+import "google/api/annotations.proto";
+
 enum Gender {
 	UNKNOWN_GENDER = 0;
 	MALE = 1;
@@ -33,7 +35,11 @@ message GetEntityInfoRequest{
 }
 
 service UniversityManager{
-	rpc GetStudentInfo(GetEntityInfoRequest) returns(Student){}
+	rpc GetStudentInfo(GetEntityInfoRequest) returns(Student){
+		option (google.api.http) = {
+			get: "/v1/student/{id}"
+		};
+	}
 	rpc GetCourseInfo(GetEntityInfoRequest) returns(Course){}
 	rpc GetProfessorInfo(GetEntityInfoRequest) returns(Professor){}
 }

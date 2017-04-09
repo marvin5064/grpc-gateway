@@ -22,4 +22,8 @@ if [ ! -d "protobuf/schema" ]; then
 	exit 1
 fi
 
-protoc --proto_path=protobuf/schema --go_out=plugins=grpc:protobuf protobuf/schema/university/*.proto
+protoc --proto_path=protobuf/schema \
+-I$GOPATH/src \
+-I$GOPATH/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis \
+--grpc-gateway_out=logtostderr=true:protobuf \
+--go_out=plugins=grpc:protobuf protobuf/schema/university/*.proto
