@@ -1,0 +1,24 @@
+syntax = "proto3";
+package database;
+
+import "google/api/annotations.proto";
+
+message DataEntry {
+	string key = 1;
+	string value = 2;
+}
+
+
+
+service DatabaseManager{
+	rpc SetDatabaseInfo(DataEntry) returns(DataEntry){
+		option (google.api.http) = {
+			post: "/v1/database/{key}/{value}"
+		};
+	}
+	rpc GetDatabaseInfo(DataEntry) returns(DataEntry){
+		option (google.api.http) = {
+			get: "/v1/database/{key}"
+		};
+	}
+}

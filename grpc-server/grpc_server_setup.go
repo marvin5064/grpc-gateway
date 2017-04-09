@@ -11,7 +11,7 @@ import (
 )
 
 func (s *server) setupGrcpServer() {
-	addr := ":50551"
+	addr := ":" + s.port
 	lis, err := net.Listen("tcp", addr)
 	if err != nil {
 		log.Fatalf("failed to listen: %v", err)

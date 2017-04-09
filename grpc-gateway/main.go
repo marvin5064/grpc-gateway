@@ -8,6 +8,7 @@ import (
 	"golang.org/x/net/context"
 
 	"github.com/grpc-ecosystem/grpc-gateway/runtime"
+	"github.com/marvin5064/grpc-gateway/protobuf/database"
 	"github.com/marvin5064/grpc-gateway/protobuf/university"
 	"google.golang.org/grpc"
 )
@@ -18,6 +19,11 @@ func main() {
 	if err != nil {
 		log.Fatalln(err)
 	}
-	fmt.Println("set up university manager gateway at :8080")
+
+	err = database.RegisterDatabaseManagerHandlerFromEndpoint(context.TODO(), mux, "localhost:50552", []grpc.DialOption{grpc.WithInsecure()})
+	if err != nil {
+		log.Fatalln(err)
+	}
+	fmt.Println("set up grpc gateway at :8080")
 	http.ListenAndServe(":8080", mux)
 }
