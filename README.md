@@ -24,8 +24,9 @@ go get -u github.com/golang/protobuf/protoc-gen-go
 4. in `grpc-client`, `grpc-server`, `grpc-gateway`:
 ```
 go build
-./{name above} (if you go build in grpc-client, then ./grpc-client)
+./{name above}
 ```
+if you go build in `grpc-client`, then you shall `./grpc-client`
 5. If you have the `grpc-gateway` running, please checkout url:
 ```
 localhost:8080/v1/student/{id} < you will get return in id: 1, 2, 3
