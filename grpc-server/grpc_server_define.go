@@ -18,6 +18,8 @@ func (s *server) GetStudentInfo(ctx context.Context, request *university.GetEnti
 		student = student2
 	case "3":
 		student = student3
+	default:
+		return &university.Student{}, nil
 	}
 	return student, nil
 }
@@ -30,6 +32,8 @@ func (s *server) GetCourseInfo(ctx context.Context, request *university.GetEntit
 		course = course1
 	case "2":
 		course = course2
+	default:
+		return &university.Course{}, nil
 	}
 	return course, nil
 }
@@ -42,6 +46,8 @@ func (s *server) GetProfessorInfo(ctx context.Context, request *university.GetEn
 		professor = professor1
 	case "2":
 		professor = professor2
+	default:
+		return &university.Professor{}, nil
 	}
 	return professor, nil
 }

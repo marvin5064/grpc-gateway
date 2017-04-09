@@ -40,6 +40,14 @@ service UniversityManager{
 			get: "/v1/student/{id}"
 		};
 	}
-	rpc GetCourseInfo(GetEntityInfoRequest) returns(Course){}
-	rpc GetProfessorInfo(GetEntityInfoRequest) returns(Professor){}
+	rpc GetCourseInfo(GetEntityInfoRequest) returns(Course){
+		option (google.api.http) = {
+			get: "/v1/course/{id}"
+		};
+	}
+	rpc GetProfessorInfo(GetEntityInfoRequest) returns(Professor){
+		option (google.api.http) = {
+			get: "/v1/professor/{id}"
+		};
+	}
 }
