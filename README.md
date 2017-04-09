@@ -39,3 +39,6 @@ Please try `localhost:8080/v1/student/1`
 
 
 PS: If you want to execute `grpc-client` or `grpc-gateway`, make sure you have `grpc-server` already runnning
+
+
+- The UI of generated documentation of API on swaggerhub: `https://app.swaggerhub.com/api/marvin5064/university-university_proto/0.0.1`
