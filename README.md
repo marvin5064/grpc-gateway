@@ -15,6 +15,7 @@ make
 make check
 sudo make install
 ```
+
 3. update the package below:
 ```
 go get -u github.com/grpc-ecosystem/grpc-gateway/protoc-gen-grpc-gateway
@@ -27,6 +28,7 @@ go build
 ./{name above}
 ```
 if you go build in `grpc-client`, then you shall `./grpc-client`
+
 5. If you have the `grpc-gateway` running, please checkout url:
 ```
 localhost:8080/v1/student/{id} < you will get return in id: 1, 2, 3
