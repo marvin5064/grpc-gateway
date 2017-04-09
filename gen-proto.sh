@@ -26,4 +26,5 @@ protoc --proto_path=protobuf/schema \
 -I$GOPATH/src \
 -I$GOPATH/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis \
 --grpc-gateway_out=logtostderr=true:protobuf \
+--swagger_out=logtostderr=true:protobuf \
 --go_out=plugins=grpc:protobuf protobuf/schema/university/*.proto

@@ -1,0 +1,169 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "university/university.proto",
+    "version": "version not set"
+  },
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/v1/course/{id}": {
+      "get": {
+        "operationId": "GetCourseInfo",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/universityCourse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "UniversityManager"
+        ]
+      }
+    },
+    "/v1/professor/{id}": {
+      "get": {
+        "operationId": "GetProfessorInfo",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/universityProfessor"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "UniversityManager"
+        ]
+      }
+    },
+    "/v1/student/{id}": {
+      "get": {
+        "operationId": "GetStudentInfo",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/universityStudent"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "UniversityManager"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "universityCourse": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "professors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/universityProfessor"
+          }
+        }
+      }
+    },
+    "universityGender": {
+      "type": "string",
+      "enum": [
+        "UNKNOWN_GENDER",
+        "MALE",
+        "FEMALE"
+      ],
+      "default": "UNKNOWN_GENDER"
+    },
+    "universityGetEntityInfoRequest": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        }
+      }
+    },
+    "universityProfessor": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "gender": {
+          "$ref": "#/definitions/universityGender"
+        },
+        "age": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "universityStudent": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "gender": {
+          "$ref": "#/definitions/universityGender"
+        },
+        "name": {
+          "type": "string"
+        },
+        "age": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "registed_courses": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/universityCourse"
+          }
+        }
+      }
+    }
+  }
+}
